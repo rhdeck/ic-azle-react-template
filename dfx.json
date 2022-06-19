@@ -1,6 +1,6 @@
 {
   "canisters": {
-    "backens": {
+    "backend": {
       "type": "custom",
       "build": "npm run azle heartbeat",
       "root": "azle/src",
