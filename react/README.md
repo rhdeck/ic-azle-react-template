@@ -1,6 +1,6 @@
-# DETI Frontend
+# DFX TS Frontend
 
-This contains the code for the front-end of the DETI decentralized time service for Internet Computer.
+This contains the code for the front-end of the DFX Template for Internet Computer.
 
 It is built with:
 

@@ -1,20 +1,12 @@
 {
   "canisters": {
-    "heartbeat": {
+    "backend": {
       "type": "custom",
-      "build": "npx azle heartbeat",
+      "build": "npx azle backend",
       "root": "src",
-      "ts": "src/heartbeat.ts",
-      "candid": "src/heartbeat.did",
-      "wasm": "target/wasm32-unknown-unknown/release/heartbeat.wasm.gz"
-    },
-    "ticker1": {
-      "type": "custom",
-      "build": "npx azle ticker1",
-      "root": "src",
-      "ts": "src/ticker2.ts",
-      "candid": "src/ticker2.did",
-      "wasm": "target/wasm32-unknown-unknown/release/ticker1.wasm.gz"
+      "ts": "src/backend.ts",
+      "candid": "src/backend.did",
+      "wasm": "target/wasm32-unknown-unknown/release/backend.wasm.gz"
     }
   }
 }

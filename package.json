@@ -4,6 +4,7 @@
     "start": "(cd react && yarn start)",
     "azle": "cd azle && npx azle",
     "rebuild": "dfx canister create --all && dfx build && yarn generate",
+    "rebuild:backend": "dfx canister create backend && dfx build backend",
     "generate": "dfx generate backend && ts-node generate_config.ts",
     "postinstall": "(cd react && yarn) && (cd azle && yarn)",
     "deploy:local": "ts-node set_mode.ts local && yarn rebuild && dfx deploy",

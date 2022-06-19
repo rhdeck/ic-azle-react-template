@@ -20,7 +20,7 @@ const useBackend = () => {
   const [actor, setActor] = useState<ActorSubclass<_SERVICE>>();
   useEffect(() => {
     (async () => {
-      const a = await createActor(heartbeat, {
+      const a = await createActor(backend, {
         agentOptions: { host },
       });
       setActor(a);
@@ -34,44 +34,14 @@ export const LoggedOut: FC = () => {
   const [plugNewClass, setPlugNewClass] = useState("opacity-0");
   const [iconNewClass, setIconNewClass] = useState("text-black");
   const [isOpen, setIsOpen] = useState(false);
-  const actor = useHeartbeat();
-  const getStats = useCallback(async () => {
-    if (actor) {
-      console.log("Firing getstats");
-      setHeartbeats(await actor.get_total_heartbeats());
-      setMessages(await actor.get_total_messages());
-      setBurnedPulses(await actor.get_total_burned_pulses());
-    }
-  }, [actor]);
-  useEffect(() => {
-    if (actor) {
-      clearInterval(timer);
-      timer = setInterval(getStats, 5000);
-    }
-    return () => {
-      clearInterval(timer);
-    };
-  }, [getStats]);
-  const [heartbeats, setHeartbeats] = useState(BigInt(0));
-  const [messages, setMessages] = useState(BigInt(0));
-  const [burnedPulses, setBurnedPulses] = useState(BigInt(0));
+
   useEffect(() => {
     setTimeout(() => {
       // setNewClass("blur-xl");
       setPlugNewClass("opacity-100");
     }, 2000);
   }, []);
-  useEffect(() => {
-    if (heartbeats) {
-      setNewClass("blur-xl");
-      setIconNewClass("text-white translate-y-10");
 
-      setTimeout(() => {
-        setNewClass("blur-sm");
-        setIconNewClass("text-black");
-      }, 1500);
-    }
-  }, [heartbeats]);
   return (
     <Fragment>
       <div
@@ -132,13 +102,6 @@ export const LoggedOut: FC = () => {
           </div>
 
           <div className="flex justify-around w-full flex-row"></div>
-          <div className="flex justify-around  flex-row  ">
-            <Stats
-              heartbeats={heartbeats}
-              messages={messages}
-              burnedPulses={burnedPulses}
-            />
-          </div>
           <div className="flex justify-around w-full flex-row">
             <div className="flex">
               <button
@@ -163,46 +126,5 @@ export const LoggedOut: FC = () => {
 };
 
 /* This example requires Tailwind CSS v2.0+ */
-
-const Stats: FC<{
-  heartbeats: bigint;
-  burnedPulses: bigint;
-  messages: bigint;
-}> = ({ heartbeats, burnedPulses, messages }) => {
-  // const { createActor } = usePlug();
-
-  const stats = [
-    { name: "Heartbeats", stat: heartbeats.toLocaleString() },
-    { name: "Messages", stat: messages.toLocaleString() },
-    {
-      name: "Burned Pulses",
-      stat: (Number(burnedPulses) / 10_000_000).toFixed(7),
-    },
-  ];
-  return (
-    <div>
-      <div className="p-6 bg-black bg-opacity-60 rounded-lg mb-6">
-        <h2 className="text-3xl leading-6 font-bold text-gray-100 text-center">
-          Statistics
-        </h2>
-        <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
-          {stats.map((item) => (
-            <div
-              key={item.name}
-              className="px-4 py-5 bg-gradient-to-r from-yellow-600 to-blue-800 text-white shadow rounded-lg overflow-hidden sm:p-6 border-4 border-orange-500"
-            >
-              <dt className="text-sm font-medium text-gray-100 truncate">
-                {item.name}
-              </dt>
-              <dd className="mt-1 text-3xl font-semibold text-gray-100">
-                {item.stat}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </div>
-  );
-};
 
 export default LoggedOut;

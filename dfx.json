@@ -2,7 +2,7 @@
   "canisters": {
     "backend": {
       "type": "custom",
-      "build": "npm run azle heartbeat",
+      "build": "npm run azle backend",
       "root": "azle/src",
       "ts": "azle/src/backend.ts",
       "candid": "azle/src/backend.did",
