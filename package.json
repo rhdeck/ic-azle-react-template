@@ -1,11 +1,10 @@
 {
   "scripts": {
-    "build": "node log_env.js && (cd react && yarn && yarn build) && (cd react-ticker && yarn && yarn build)",
+    "build": "cd react && yarn && yarn build",
     "start": "(cd react && yarn start)",
-    "start:ticker": "(cd react-ticker && yarn start)",
     "azle": "cd azle && npx azle",
     "rebuild": "dfx canister create --all && dfx build && yarn generate",
-    "generate": "dfx generate heartbeat && dfx generate ticker2 && ts-node generate_config.ts",
+    "generate": "dfx generate backend && ts-node generate_config.ts",
     "postinstall": "(cd react && yarn) && (cd azle && yarn)",
     "deploy:local": "ts-node set_mode.ts local && yarn rebuild && dfx deploy",
     "deploy:production": "ts-node set_mode.ts production && yarn rebuild && dfx deploy --network ic"
