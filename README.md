@@ -48,4 +48,20 @@ yarn deploy:local backend
 
 Second, you can start the frontend using the React hot server
 ```bash
-dfx d
+yarn start
+```
+
+## Managing frontend
+
+Manage the react dependencies and setup in the `/react` subdirectory. Typescript source files are in the `react/src` subdirectory.
+
+## Managing backend
+
+The backend is written in TS to introduce one to [Azle](https://github.com/demergentlabs/azle). Walk through the code and the Azle documentation to get a sense of how it works. 
+
+
+## Thank you
+
+We are grateful to the DFINITY foundation, the SUPERNOVA hackathon, helpful people on the DFINITY dev discord, and especially to Jordan Last for getting us through some of the tough parts of making our project work on IC and on Azle. We hope this template makes that journey easier for you too! 
+
+Happy building! 
