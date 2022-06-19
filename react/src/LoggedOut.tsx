@@ -13,10 +13,10 @@ const markdown = raw("./about.md");
 
 const {
   host,
-  canisters: { heartbeat },
+  canisters: { backend },
 } = config[config.mode as "production" | "local"];
 
-const useHeartbeat = () => {
+const useBackend = () => {
   const [actor, setActor] = useState<ActorSubclass<_SERVICE>>();
   useEffect(() => {
     (async () => {

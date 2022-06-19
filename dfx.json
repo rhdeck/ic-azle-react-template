@@ -1,0 +1,19 @@
+{
+  "canisters": {
+    "backens": {
+      "type": "custom",
+      "build": "npm run azle heartbeat",
+      "root": "azle/src",
+      "ts": "azle/src/backend.ts",
+      "candid": "azle/src/backend.did",
+      "wasm": "azle/target/wasm32-unknown-unknown/release/backend.wasm.gz"
+    },
+    "react": {
+      "frontend": {
+        "entrypoint": "react/build/index.html"
+      },
+      "source": ["react/build/"],
+      "type": "assets"
+    }
+  }
+}
