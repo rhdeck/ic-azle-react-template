@@ -42,7 +42,7 @@ dfx start
 
 First, launch the backend
 ```bash
-yarn rebuild
+yarn rebuild:backend
 yarn deploy:local backend
 ```
 

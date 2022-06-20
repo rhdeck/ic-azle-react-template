@@ -34,7 +34,7 @@ export const LoggedOut: FC = () => {
   const [plugNewClass, setPlugNewClass] = useState("opacity-0");
   const [iconNewClass, setIconNewClass] = useState("text-black");
   const [isOpen, setIsOpen] = useState(false);
-
+  const backend = useBackend();
   useEffect(() => {
     setTimeout(() => {
       // setNewClass("blur-xl");
